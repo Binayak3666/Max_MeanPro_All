@@ -7,10 +7,7 @@ const Post = require("./models/post");
 
 const app = express();
 
-mongoose
-  .connect(
-    "mongodb+srv://binayakhotta:Spbr1995@freecluster.5ubcq.mongodb.net/mean-angular?retryWrites=true&w=majority"
-  )
+mongoose.connect("mongodb+srv://binayakhotta:Spbr1995@freecluster.5ubcq.mongodb.net/mean-angular?retryWrites=true&w=majority")
   .then(() => {
     console.log("Connected to database");
   })
@@ -60,5 +57,14 @@ app.get("/api/posts", (req, res, next) => {
       console.log(err);
     });
 });
+app.delete("/api/posts/:id",(req, res, next)=>{
+  Post.deleteOne({_id: req.params.id}).then((response)=>{
+    console.log(response)
+    res.status(200).json({
+      message: "post deleted successfully"
+    })
+  })
+
+})
 //we need to export
 module.exports = app;
