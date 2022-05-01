@@ -40,7 +40,8 @@ export class PostService {
   setPost(title: string, content: string) {
     const post = { id: null, title: title, content: content };
     this.http.post('http://localhost:3000/api/posts', post).subscribe((res) => {
-      // console.log(res)
+      const id = res['postId'];
+      post.id = id;
       this.posts.push(post);
       this.updatedPost.next([...this.posts]);
     });
