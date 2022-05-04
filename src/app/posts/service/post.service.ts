@@ -51,6 +51,7 @@ export class PostService {
       post.id = id;
       this.posts.push(post);
       this.updatedPost.next([...this.posts]);
+      this.router.navigate(["/"])
     });
   }
   updatePost(id:string, title:string, content:string){
