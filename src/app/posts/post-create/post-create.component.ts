@@ -19,7 +19,9 @@ export class PostCreateComponent implements OnInit {
       if(paramMap.has('postId')){
         this.mode = 'edit';
         this.postId = paramMap.get('postId')
-        this.post = this.apiService.getPost(this.postId)
+        this.apiService.getPost(this.postId).subscribe((response)=>{
+          this.post = {id:response['id'] ,title:response['title'], content:response['content']}
+        })
       }else{
         this.mode = 'create'
         this.postId = null
