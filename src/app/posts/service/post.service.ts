@@ -37,6 +37,9 @@ export class PostService {
   getPostUpdateListener() {
     return this.updatedPost.asObservable();
   }
+  getPost(id: string){
+    return {...this.posts.find(p => p['id'] === id) }
+  }
   setPost(title: string, content: string) {
     const post = { id: null, title: title, content: content };
     this.http.post('http://localhost:3000/api/posts', post).subscribe((res) => {
@@ -46,9 +49,15 @@ export class PostService {
       this.updatedPost.next([...this.posts]);
     });
   }
+  updatePost(id:string, title:string, content:string){
+    const post = {id: id, title: title, content: content }
+    this.http.put('http://localhost:3000/api/posts/'+id, post).subscribe((response)=>{
+      console.log(response)
+    })
+  }
+
   deletPost(id){
     this.http.delete('http://localhost:3000/api/posts/'+id).subscribe((res)=>{
-      // console.log(res)
       const updatedPost = this.posts.filter(post => post["id"] !== id);
       this.posts = updatedPost;
       this.updatedPost.next([...this.posts])

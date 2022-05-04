@@ -27,7 +27,7 @@ app.use((req, res, next) => {
   );
   res.setHeader(
     "Access-Control-Allow-Methods",
-    "GET, POST, PATCH, DELETE, OPTIONS"
+    "GET, POST,PUT, PATCH, DELETE, OPTIONS"
   );
   next();
 });
@@ -50,7 +50,7 @@ app.post("/api/posts", (req, res, next) => {
 app.get("/api/posts", (req, res, next) => {
   Post.find()
     .then((document) => {
-      console.log(document);
+      // console.log(document);
       res.status(200).json({
         message: "Posts fetched successfully!",
         posts: document,
@@ -60,9 +60,21 @@ app.get("/api/posts", (req, res, next) => {
       console.log(err);
     });
 });
+app.put("/api/posts/:id",(req, res, next)=>{
+  const post = new Post({
+    _id : req.body.id,
+    title: req.body.title,
+    content: req.body.content
+  })
+  Post.updateOne({_id: req.params.id},post).then(result => {
+    console.log(result)
+    res.status(200).json({ message: "Update successful!" });
+  });
+})
+
 app.delete("/api/posts/:id",(req, res, next)=>{
   Post.deleteOne({_id: req.params.id}).then((response)=>{
-    console.log(response)
+    // console.log(response)
     res.status(200).json({
       message: "post deleted successfully"
     })
