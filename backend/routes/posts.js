@@ -91,17 +91,26 @@ router.post(
 //   }
 // );
 
+
 router.get("", (req, res, next) => {
-  Post.find()
-    .then((document) => {
-      // console.log(document);
+  const pageSize = +req.query.pagesize;
+  const currentPage = +req.query.currentPage;
+  const postQuery = Post.find();
+  let fetchedPosts;
+  if (pageSize && currentPage) {
+    postQuery.skip(pageSize * (currentPage - 1)).limit(pageSize);
+  }
+  postQuery
+    .then(documents => {
+      fetchedPosts = documents;
+      return Post.count();
+    })
+    .then(count => {
       res.status(200).json({
         message: "Posts fetched successfully!",
-        posts: document,
+        posts: fetchedPosts,
+        maxPosts: count
       });
-    })
-    .catch((err) => {
-      console.log(err);
     });
 });
 
