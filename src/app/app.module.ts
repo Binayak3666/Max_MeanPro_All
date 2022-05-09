@@ -11,6 +11,8 @@ import { MatModuleModule } from './mat-module/mat-module.module';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { PostListComponent } from './posts/post-list/post-list.component';
+import { LoginComponent } from './auth/login/login.component';
+import { SignupComponent } from './auth/signup/signup.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { PostListComponent } from './posts/post-list/post-list.component';
     PostCreateComponent,
     HeaderComponent,
     FooterComponent,
-    PostListComponent
+    PostListComponent,
+    LoginComponent,
+    SignupComponent
   ],
   imports: [
     BrowserModule,
