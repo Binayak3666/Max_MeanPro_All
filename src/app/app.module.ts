@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule,FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http'
+import { HttpClientModule } from '@angular/common/http';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -28,6 +29,8 @@ import { SignupComponent } from './auth/signup/signup.component';
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
+    FontAwesomeModule,
+    FormsModule,
     BrowserAnimationsModule,
     MatModuleModule,
     HttpClientModule

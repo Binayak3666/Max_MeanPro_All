@@ -1,1 +1,22 @@
-<p>login works!</p>
+<!-- <p>login works!</p> -->
+<!-- template-driven form -->
+<mat-card>
+  <mat-spinner *ngIf="isLoading"></mat-spinner>
+  <div class="text-center mb-3">
+    <fa-icon [icon]="faLock" class="fa-3x"></fa-icon>
+  </div>
+  <form  *ngIf="!isLoading">
+    <mat-form-field appearance="fill">
+      <mat-label>Email</mat-label>
+      <input matInput type="email" >
+      <mat-error *ngIf="">Please enter valid email</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Password</mat-label>
+      <input matInput type="password" name="" id="">
+      <mat-error *ngIf="">Please enter valid password</mat-error>
+    </mat-form-field>
+    <button mat-raised-button color="accent" type="submit">Login</button>
+  </form>
+</mat-card>
+
