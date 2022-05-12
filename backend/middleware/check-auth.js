@@ -1,5 +1,5 @@
 const jwt = require("jsonwebtoken")
-
+// middleware auth token verify for backend
 module.exports = (req, res, next)=>{
   try{
     const token = req.headers.authorization.split(" ")[1];
