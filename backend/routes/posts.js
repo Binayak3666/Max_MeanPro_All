@@ -2,6 +2,7 @@ const express = require("express");
 const multer = require("multer"); //for file uplad in server side we need to use multer node package npm i --save multer
 
 const Post = require("../models/post");
+const checkAuth = require("../middleware/check-auth")
 
 const router = express.Router();
 const MIME_TYPE_MAP = {
@@ -45,7 +46,7 @@ const storage = multer.diskStorage({
 });
 
 router.post(
-  "",
+  "",checkAuth,
   multer({ storage: storage }).single("image"),
   (req, res, next) => {
     // const post = req.body;
@@ -149,7 +150,7 @@ router.get("/:id", (req, res, next) => {
 //   }
 // );
 router.put(
-  "/:id",
+  "/:id", checkAuth,
   multer({ storage: storage }).single("image"),
   (req, res, next) => {
     let imagePath = req.body.imagePath;
@@ -170,7 +171,7 @@ router.put(
   }
 );
 
-router.delete("/:id", (req, res, next) => {
+router.delete("/:id", checkAuth, (req, res, next) => {
   Post.deleteOne({ _id: req.params.id }).then((response) => {
     // console.log(response)
     res.status(200).json({

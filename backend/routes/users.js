@@ -57,7 +57,7 @@ router.post("/login", (req, res, next) => {
       }
       const token = jwt.sign(
         { email: fatchedUser.email, userID: fatchedUser._id },
-         'Unknown@123',
+         'Secrate_Unknown@123',
          {expiresIn: "1h"}
          );
          console.log(token)
