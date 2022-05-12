@@ -36,6 +36,7 @@ router.post("/signup", (req, res, next) => {
 // first we need to validate user id and passowrd is present or not
 // 2nd we have to create JWT token for that we need to in stall jwt package
 // npm install --save jsonwebtoken
+// reference link https://jwt.io/
 router.post("/login", (req, res, next) => {
   User.findOne({ email: req.body.email })
     .then((user) => {
@@ -52,7 +53,11 @@ router.post("/login", (req, res, next) => {
           message: "Auth failed",
         });
       }
-      const token = jwt.sign({ email: user.email, userID: user._id }, 'Unknown@123');
+      const token = jwt.sign(
+        { email: user.email, userID: user._id },
+         'Unknown@123',
+         {expiresIn: "1h"}
+         );
     })
     .catch((err) => {
       return res.status(401).json({
