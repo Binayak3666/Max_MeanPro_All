@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {faLock} from '@fortawesome/free-solid-svg-icons'
 import { Form, NgForm } from '@angular/forms';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-login',
@@ -10,7 +11,7 @@ import { Form, NgForm } from '@angular/forms';
 export class LoginComponent implements OnInit {
   isLoading = false
   faLock = faLock;
-  constructor() { }
+  constructor(public authService: AuthService) { }
 
   ngOnInit(): void {
   }
@@ -18,6 +19,6 @@ export class LoginComponent implements OnInit {
     if(formData.invalid){
       return
     }
-    console.log(formData)
+    this.authService.login(formData.value.email, formData.value.password)
   }
 }

@@ -38,6 +38,7 @@ router.post("/signup", (req, res, next) => {
 // npm install --save jsonwebtoken
 // reference link https://jwt.io/
 router.post("/login", (req, res, next) => {
+  let fatchedUser ;
   User.findOne({ email: req.body.email })
     .then((user) => {
       if (!user) {
@@ -45,6 +46,7 @@ router.post("/login", (req, res, next) => {
           message: "Auth failed",
         });
       }
+      fatchedUser = user;
       return bcrypt.compare(req.body.password, user.password);
     })
     .then((result) => {
@@ -54,10 +56,14 @@ router.post("/login", (req, res, next) => {
         });
       }
       const token = jwt.sign(
-        { email: user.email, userID: user._id },
+        { email: fatchedUser.email, userID: fatchedUser._id },
          'Unknown@123',
          {expiresIn: "1h"}
          );
+         console.log(token)
+         res.status(200).json({
+           token: token
+         })
     })
     .catch((err) => {
       return res.status(401).json({
