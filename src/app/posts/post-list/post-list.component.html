@@ -11,7 +11,7 @@
       <img [src]="post['imagePath']" [alt]="post['title']">
     </div>
     <p>{{post['content']}}</p>
-    <mat-action-row>
+    <mat-action-row *ngIf="userIsAuthonticated">
       <button mat-raised-button color="primary" [routerLink]="['/edit',post['id']]">Edit</button>
       <button mat-raised-button color="accent" (click)="onDelete(post['id'])">Delete</button>
     </mat-action-row>
