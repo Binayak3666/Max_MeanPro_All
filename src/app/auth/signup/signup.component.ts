@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import {faLock} from '@fortawesome/free-solid-svg-icons'
+import { Form, NgForm } from '@angular/forms';
+import { AuthService } from '../auth.service';
+
 
 @Component({
   selector: 'app-signup',
@@ -6,10 +10,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./signup.component.scss']
 })
 export class SignupComponent implements OnInit {
-
-  constructor() { }
+  isLoading = false
+  faLock = faLock;
+  constructor(public authService: AuthService) { }
 
   ngOnInit(): void {
   }
-
+  onSignUp(formData: NgForm){
+    if(formData.invalid){
+      return
+    }
+    this.authService.createUser(formData.value.email, formData.value.password).subscribe((result)=>{
+      console.log(result)
+    })
+  }
 }
