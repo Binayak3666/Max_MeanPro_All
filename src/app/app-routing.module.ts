@@ -6,11 +6,10 @@ import { PostCreateComponent } from './posts/post-create/post-create.component';
 import { PostListComponent } from './posts/post-list/post-list.component';
 
 const routes: Routes = [
-  { path: 'list', component: PostListComponent },
+  { path: '', component: PostListComponent },
   { path: 'create', component: PostCreateComponent },
   { path: 'edit/:postId', component: PostCreateComponent },
   { path: 'login', component: LoginComponent},
-  { path:'',component: LoginComponent},
   { path:'signup',component: SignupComponent}
 ];
 
