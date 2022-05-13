@@ -20,6 +20,7 @@ export class SignupComponent implements OnInit {
     if(formData.invalid){
       return
     }
+    this.isLoading = true
     this.authService.createUser(formData.value.email, formData.value.password).subscribe((result)=>{
       console.log(result)
     })

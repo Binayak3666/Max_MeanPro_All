@@ -38,13 +38,15 @@ export class AuthService {
         this.token = token
         if (token) {
           this.isAuthonticated = true
-          this.authStatusListener.next(true)
+          this.authStatusListener.next(true);
+          this.router.navigate(['/'])
         }
       })
   }
   logout(){
     this.token = null
     this.isAuthonticated = false ;
-    this.authStatusListener.next(false)
+    this.authStatusListener.next(false);
+    this.router.navigate(['/'])
   }
 }
