@@ -21,8 +21,6 @@ export class SignupComponent implements OnInit {
       return
     }
     this.isLoading = true
-    this.authService.createUser(formData.value.email, formData.value.password).subscribe((result)=>{
-      console.log(result)
-    })
+    this.authService.createUser(formData.value.email, formData.value.password)
   }
 }
