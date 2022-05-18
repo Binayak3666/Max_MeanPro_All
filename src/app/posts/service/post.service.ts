@@ -82,11 +82,9 @@ export class PostService {
     }else{
        postData = { id: id, title: title, content: content ,imagePath:image,creator:null };
     }
-    this.http
-      .put('http://localhost:3000/api/posts/' + id, postData)
-      .subscribe((response) => {
-        this.router.navigate(['/']);
-      });
+     this.http.put('http://localhost:3000/api/posts/' + id, postData).subscribe(response => {
+      this.router.navigate(["/"]);
+    })
   }
 
   deletPost(id) {

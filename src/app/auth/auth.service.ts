@@ -39,17 +39,15 @@ export class AuthService {
     //   this.router.navigate(['/'])
     // }),(error=>{
     //   console.log(error)
-    // }),null) ; 
-    console.log(authData)   
+    // }),null) ;
+    console.log(authData)
     this.http
     .post("http://localhost:3000/api/user/signup", authData)
     .subscribe({next:(res) => {
-      console.log(res,"hello from subscribe")
       this.router.navigate(["/"]);
     },error: error => {
-      console.log(error,"hello from error")
       this.authStatusListener.next(false);
-    }}) 
+    }})
   }
 
   login(email: string, password: string) {

@@ -25,7 +25,7 @@ router.post("/signup", (req, res, next) => {
         })
         .catch((err) => {
           res.status(500).json({
-            error: err,
+            message:"invalid authontication credintial!"
           });
         });
     })
@@ -69,7 +69,7 @@ router.post("/login", (req, res, next) => {
     })
     .catch((err) => {
       return res.status(401).json({
-        message: "Auth failed",
+        message: "invalid authontication credintial!",
       });
     });
 });
