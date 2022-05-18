@@ -15,6 +15,9 @@ import { FooterComponent } from './components/footer/footer.component';
 import { PostListComponent } from './posts/post-list/post-list.component';
 import { LoginComponent } from './auth/login/login.component';
 import { SignupComponent } from './auth/signup/signup.component';
+import { ErrorInterceptor } from './error-interceptor';
+import { ErrorComponent } from './error/error.component';
+
 
 
 @NgModule({
@@ -25,7 +28,8 @@ import { SignupComponent } from './auth/signup/signup.component';
     FooterComponent,
     PostListComponent,
     LoginComponent,
-    SignupComponent
+    SignupComponent,
+    ErrorComponent
   ],
   imports: [
     BrowserModule,
@@ -41,7 +45,10 @@ import { SignupComponent } from './auth/signup/signup.component';
     provide: HTTP_INTERCEPTORS,
     useClass: AuthInterceptor,
     multi:true
-  }],
-  bootstrap: [AppComponent]
+  },
+  { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
+],
+  bootstrap: [AppComponent],
+  entryComponents: [ErrorComponent]
 })
 export class AppModule { }
