@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './auth/auth-interceptor';
@@ -11,11 +10,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatModuleModule } from './mat-module/mat-module.module';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
-import { LoginComponent } from './auth/login/login.component';
-import { SignupComponent } from './auth/signup/signup.component';
 import { ErrorInterceptor } from './error-interceptor';
 import { ErrorComponent } from './error/error.component';
 import { PostsModule } from './posts/post.module';
+import { AuthModule } from './auth/auth.module';
 
 
 
@@ -24,20 +22,17 @@ import { PostsModule } from './posts/post.module';
     AppComponent,
     HeaderComponent,
     FooterComponent,
-    LoginComponent,
-    SignupComponent,
     ErrorComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule,
-    ReactiveFormsModule,
     FontAwesomeModule,
     BrowserAnimationsModule,
     MatModuleModule,
     HttpClientModule,
-    PostsModule
+    PostsModule,
+    AuthModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,
