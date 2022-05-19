@@ -56,7 +56,6 @@ exports.userLogin =  (req, res, next) => {
          'Secrate_Unknown@123',
          {expiresIn: "1h"}
          );
-         console.log(token)
          res.status(200).json({
            token: token,
            expiresIn: 3600,
