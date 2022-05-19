@@ -13,7 +13,6 @@ import { FooterComponent } from './components/footer/footer.component';
 import { ErrorInterceptor } from './error-interceptor';
 import { ErrorComponent } from './error/error.component';
 import { PostsModule } from './posts/post.module';
-import { AuthModule } from './auth/auth.module';
 
 
 
@@ -32,7 +31,6 @@ import { AuthModule } from './auth/auth.module';
     MatModuleModule,
     HttpClientModule,
     PostsModule,
-    AuthModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,

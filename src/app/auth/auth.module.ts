@@ -6,10 +6,9 @@ import { MatModuleModule } from "../mat-module/mat-module.module";
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 
-
-
 import { LoginComponent } from "./login/login.component";
 import { SignupComponent } from "./signup/signup.component";
+import { AuthRoutingModule } from "./auth-routing.module";
 
 
 @NgModule({
@@ -22,7 +21,8 @@ import { SignupComponent } from "./signup/signup.component";
     FormsModule,
     MatModuleModule,
     RouterModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    AuthRoutingModule
   ]
 })
 
