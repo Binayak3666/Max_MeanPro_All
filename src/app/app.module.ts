@@ -7,26 +7,23 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { PostCreateComponent } from './posts/post-create/post-create.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatModuleModule } from './mat-module/mat-module.module';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
-import { PostListComponent } from './posts/post-list/post-list.component';
 import { LoginComponent } from './auth/login/login.component';
 import { SignupComponent } from './auth/signup/signup.component';
 import { ErrorInterceptor } from './error-interceptor';
 import { ErrorComponent } from './error/error.component';
+import { PostsModule } from './posts/post.module';
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    PostCreateComponent,
     HeaderComponent,
     FooterComponent,
-    PostListComponent,
     LoginComponent,
     SignupComponent,
     ErrorComponent
@@ -39,7 +36,8 @@ import { ErrorComponent } from './error/error.component';
     FontAwesomeModule,
     BrowserAnimationsModule,
     MatModuleModule,
-    HttpClientModule
+    HttpClientModule,
+    PostsModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,
